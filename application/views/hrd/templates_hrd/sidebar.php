@@ -1,4 +1,4 @@
-<body id="page-top">
+    <body id="page-top">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -57,8 +57,8 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub-Menu :</h6>
-            <a class="collapse-item" href="<?php echo base_url('hrd/nilai/tambah') ?>">Tambah Data Kriteria</a>
-            <a class="collapse-item" href="<?php echo base_url('hrd/nilai') ?>">Kelola Data Kriteria</a>
+            <!-- <a class="collapse-item" href="<?php echo base_url('hrd/nilai/tambah') ?>">Tambah Data Kriteria</a> -->
+            <a class="collapse-item" href="<?php echo base_url('hrd/kriteria') ?>">Kelola Data Kriteria</a>
           </div>
         </div>
       </li>

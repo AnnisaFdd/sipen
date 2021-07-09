@@ -12,10 +12,10 @@ class Karyawan extends CI_Controller{
 	public function index(){
 		$data['usernya'] = $this->db->get_where('user',['username' => $this->session->userdata('usernames')])->row_array();
 		$data['karyawan'] = $this->model_user->karyawan();
-		$this->load->view('user/templates_hrd/header');
-		$this->load->view('user/templates_hrd/sidebar',$data);
-		$this->load->view('user/karyawan/dashboard', $data);
-		$this->load->view('user/templates_hrd/footer');
+		$this->load->view('hrd/templates_hrd/header');
+		$this->load->view('hrd/templates_hrd/sidebar',$data);
+		$this->load->view('hrd/karyawan/dashboard', $data);
+		$this->load->view('hrd/templates_hrd/footer');
 		
 	}
 
@@ -84,7 +84,10 @@ class Karyawan extends CI_Controller{
 
 	public function hapus($id){
 		$where = array('id_karyawan'=>$id);
-		{
+		$cek = $this->model_user->is_ada_nilai($id);
+		if (count($cek)>0){
+			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert dismissible fade show" role="alert">Data Karyawan Tidak bisa dihapus karena dipakai tabel lain<button type="button" class="close" data-dismiss="alert" aria=label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		}else{
 			$this->model_user->hapus_karyawan($where);
 			$this->session->set_flashdata('pesan','<div class="alert alert-success alert dismissible fade show" role="alert">Data Karyawan Berhasil Dihapus<button type="button" class="close" data-dismiss="alert" aria=label="Close"><span aria-hidden="true">&times;</span></button></div>');
 		}

@@ -24,7 +24,7 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="h6 font-weight-bold text-light text-uppercase mb-1">Siaga Bencana</div>
-                    <div class="h3 mb-0 font-weight-bold text-light">1</div>
+                    <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalsiaga']; ?></div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-business-time fa-4x text-light"></i>
@@ -41,7 +41,7 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="h6 font-weight-bold text-light text-uppercase mb-1">SDM dan Relawan</div>
-                    <div class="h3 mb-0 font-weight-bold text-light">2</div>
+                    <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalsdm']; ?></div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-tools fa-4x text-light"></i>
@@ -58,7 +58,7 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="h6 font-weight-bold text-light text-uppercase mb-1">Yansokes</div>
-                    <div class="h3 mb-0 font-weight-bold text-light">3</div>
+                    <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalyansokes']; ?></div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-shuttle-van fa-4x text-light"></i>
@@ -74,11 +74,11 @@
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="h6 font-weight-bold text-light text-uppercase mb-1">Kendaraan</div>
-                    <div class="h3 mb-0 font-weight-bold text-light">3</div>
+                    <div class="h6 font-weight-bold text-light text-uppercase mb-1">Keuangan</div>
+                    <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalkeuangan']; ?></div>
                   </div>
                   <div class="col-auto">
-                    <i class="fas fa-shuttle-van fa-4x text-light"></i>
+                    <i class="fas fa-money-check fa-4x text-light"></i>
                   </div>
                 </div>
               </div>
@@ -92,7 +92,7 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="h6 font-weight-bold text-light text-uppercase mb-1">Umum dan Kepegawaian</div>
-                    <div class="h3 mb-0 font-weight-bold text-light">4</div>
+                    <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalumum']; ?></div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-layer-group fa-4x text-light"></i>
@@ -109,7 +109,7 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="h6 font-weight-bold text-light text-uppercase mb-1">Humas dan IT</div>
-                    <div class="h3 mb-0 font-weight-bold text-light">5</div>
+                    <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalhumas']; ?></div>
                   </div>
                   <div class="col-auto">
                     <i class="far fa-building fa-4x text-light"></i>

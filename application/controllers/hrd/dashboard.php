@@ -11,6 +11,8 @@ class Dashboard extends CI_Controller{
 	}
 	public function index(){
 		$data['usernya'] = $this->db->get_where('user',['username' => $this->session->userdata('usernames')])->row_array();
+		$count_data = $this->model_hrd->countData();
+        $data['count_data']=$count_data;
 		$this->load->view('hrd/templates_hrd/header');
 		$this->load->view('hrd/templates_hrd/sidebar',$data);
 		$this->load->view('hrd/dashboard', $data);

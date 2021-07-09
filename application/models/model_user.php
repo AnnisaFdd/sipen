@@ -48,7 +48,6 @@ class Model_user extends CI_Model{
 	public function kriteria(){
 		$this->db->select('*');
 		$this->db->from('kriteria');
-		// $this->db->join('subbidang','karyawan.id_subbidang = subbidang.id_subbidang');
 		$query=$this->db->get();
 		return $query->result();
 	}
@@ -184,15 +183,32 @@ class Model_user extends CI_Model{
 
 	//HRD Nilai
 	public function get_nilaiK(){
-		$this->db->select('*');
+		$this->db->select('*');		
 		$this->db->from('nilai');
 		$this->db->join('karyawan','karyawan.id_karyawan = nilai.id_karyawan');
+		$this->db->join('subbidang','karyawan.id_subbidang = subbidang.id_subbidang');
+		$this->db->order_by("nilai.id_nilai", "asc");
 		$query=$this->db->get();
 		return $query->result();
 	}
 
-	
+	public function get_keterangan(){
+		$this->db->select('keterangan');		
+		$this->db->from('kriteria');
+		return $this->db->get()->result_array();
+	}
 
+	public function get_bobot(){
+		$this->db->select('bobot');		
+		$this->db->from('kriteria');
+		return $this->db->get()->result_array();
+	}
+	
+	// public function get_namaKriteria(){
+	// 	$this->db->select('nama_kriteria');		
+	// 	$this->db->from('kriteria');
+	// 	return $this->db->get()->result_array();
+	// }
 
 
 }

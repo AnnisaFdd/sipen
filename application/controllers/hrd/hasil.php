@@ -13,35 +13,127 @@ class Hasil extends CI_Controller{
 		$data['usernya'] = $this->db->get_where('user',['username' => $this->session->userdata('usernames')])->row_array();
 		$data['kriteria'] = $this->model_user->kriteria();
 		$data['nilai'] = $this->model_user->get_nilaiK();
-		$bobot= $data['nilai'];
-		foreach($bobot as $row) {
-			foreach($row as $a){
-				$bobot = $a;
-				break;
-			}
+		$data['keterangan'] = $this->model_user->get_keterangan();
+		$data['result'] = $this->model_user->get_bobot();
+		//--- PEMBOBOTAN ---//
+		$bobot = array();
+		$asarray = json_decode(json_encode($data['nilai']), true);
+
+		foreach ($asarray as $satu){
+			$potong = array_slice($satu, 0); //copy array agar tetap
+			
+			$potong = array_splice($potong, 2, count($potong));
+			
+
+			foreach ($potong as $p) {
+				$get_idx = array_search($p,$potong);
+				if($get_idx === array_search($satu[$get_idx],$potong)){
+					if($p == $satu['nama_karyawan'] || $p == $satu['nama_subbidang']){
+						$get_idx = $p;
+					}else if($p>=0 && $p<=50){
+						$get_idx = 1;
+					}else if($p>=51 && $p<=60){
+						$get_idx = 2;
+					}else if($p>=61 && $p<=75){
+						$get_idx = 3;
+					}else if($p>=76 && $p<=90){
+						$get_idx = 4;
+					}else{
+						$get_idx = 5;
+					}
+				}
+				array_push($bobot, $get_idx);
+			}	
 		}
-		// foreach ($bobot as $a){
-			// $nilai[] = array($a->C1, $a->C2, $a->C3, $a->C4, $a->C5,$a->C6, $a->C7, $a->C8);
-			// $nilai[] = array_slice((array)$a, 2, -2);
-			// foreach ($nilai as $n)
-			// foreach($nilai as $n){
-			// 	$b= $nilai[0][0];
-			// 	break;
-			// 	if ($n>= 0 && $n <=50) {
-			// 		$n =1;
-			// 	}elseif ($n>= 51 && $n <=60){
-			// 		$n = 2;
-			// 	}elseif ($n>= 61 && $n <=75){
-			// 		$n = 3;
-			// 	}elseif ($n>= 76 && $n <=90){
-			// 		$n = 4;
-			// 	}else{
-			// 		$n= 5;
-			// 	}
-			// }
-			// break;
-		// }
+		$bobot = array_chunk($bobot, max(array_map('count', $asarray))-2); // array to matriks based column
 		$data['bobot'] = $bobot;
+
+		//array of array to array
+		foreach($data['keterangan'] as $k=>$v) {
+ 		   $new[$k] = $v['keterangan'];
+		}
+
+		
+		//Normalisasi
+		$norm = array();
+		$jumlah_kolom = array();
+
+		// jumlah each column
+		//i kolom dan j baris
+		for($i=0; $i<=max(array_map('count', $bobot))-4; $i++){
+			$temp = $bobot[0][$i];
+			// $min = $bobot[0][$i];
+			if($new[$i]=='Benefit'){
+				for($j=0; $j<=count($bobot)-1; $j++){
+					if ($temp<$bobot[$j][$i]){
+						$temp= $bobot[$j][$i];
+					}
+				}
+			}else{
+				for($j=0; $j<=count($bobot)-1; $j++){
+					if ($temp>$bobot[$j][$i]){
+						$temp= $bobot[$j][$i];
+					}
+				}
+
+			}
+			array_push($jumlah_kolom, $temp);
+		}
+			
+		
+		// hitung normalisasi
+		foreach ($bobot as $dua) {
+			$potong = array_slice($dua, 0); //copy array agar tetap
+			array_push($norm, $dua[8], $dua[10]); //push 2 kolom pertama
+			$potong = array_splice($potong, 0, count($potong)-3); //split selain 2 kolom pertama
+	
+			for($i=0; $i<=count($potong)-1; $i++){
+				$hasil = round($potong[$i]/$jumlah_kolom[$i], 2);
+				array_push($norm, $hasil);
+			}
+			
+
+		}
+		$norm = array_chunk($norm, max(array_map('count', $asarray))-3); // array to matriks based column
+		$data['norm'] = $norm;
+
+		//Hasil, array of array to array
+		foreach($data['result'] as $k=>$v) {
+ 		   $new[$k] = $v['bobot'];
+		}
+
+		$result= array();
+
+		foreach ($norm as $tiga) {
+			$potong = array_slice($tiga, 0); //copy array agar tetap
+			array_push($result, $tiga[0], $tiga[1]); //push 2 kolom pertama
+			$potong = array_splice($potong, 2, count($potong)); //split selain 2 kolom pertama
+			$count=0;
+			for($i=0; $i<=count($potong)-1; $i++){
+				$count = $count+$potong[$i]*$new[$i];
+				
+			}
+			array_push($result, $count);
+			
+		}
+
+		$result = array_chunk($result, max(array_map('count', $asarray))-10); // array to matriks based column
+		
+
+
+		//Final
+
+		function invenDescSort($item1,$item2)
+		{
+		    if ($item1[2] == $item2[2]) return 0;
+		    return ($item1[2] < $item2[2]) ? 1 : -1;
+		}
+		usort($result,'invenDescSort');
+
+		$data['wr'] = $result;
+
+
+
 		$this->load->view('hrd/templates_hrd/header');
 		$this->load->view('hrd/templates_hrd/sidebar',$data);
 		$this->load->view('hrd/hasil/dashboard', $data);

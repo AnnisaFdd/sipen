@@ -94,11 +94,142 @@
                         </div>
                       </div>
                     </div>
+                    <!-- Normalisasi -->
+                     <div class="card shadow mb-4"> 
+                      <br>
+                      <center><h3>Tabel Pembobotan</h3></center>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered" width="100%" cellspacing="0.5">
+                            <thead>
+                              <tr style="font-size: 12px; text-align: center;">
+                                <th>No</th>
+                                <th>Nama Karyawan</th>
+                                <th>Subbidang</th>
+                                <th>Kesetiaan</th>
+                                <th>Prestasi Kerja</th>
+                                <th>Tanggung Jawab</th>
+                                <th>Ketaatan</th>
+                                <th>Kejujuran</th>
+                                <th>Kerjasama</th>
+                                <th>Prakarsa</th>
+                                <th>Kepimpinan</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php 
+                                $no=1;
+                                foreach ($bobot as $sts) :
+                              ?> 
+                              <tr style="font-size: 12px; text-align:center;">
+                                <td><?php echo $no++; ?></td>
+                                <td><?php echo $sts[8]; ?></td>
+                                <td><?php echo $sts[10]; ?></td>
+                                <td><?php echo $sts[0]; ?></td>
+                                <td><?php echo $sts[1]; ?></td>
+                                <td><?php echo $sts[2]; ?></td>
+                                <td><?php echo $sts[3]; ?></td>
+                                <td><?php echo $sts[4]; ?></td>
+                                <td><?php echo $sts[5]; ?></td>
+                                <td><?php echo $sts[6]; ?></td>
+                                <td><?php echo $sts[7]; ?></td>
+                              </tr> 
+                            <?php endforeach; ?>
+                            </tbody> 
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  
+                  <!-- End Normalisasi -->
+                  <!-- Normalisasi -->
+                     <div class="card shadow mb-4"> 
+                      <br>
+                      <center><h3>Tabel Normalisasi</h3></center>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered" width="100%" cellspacing="0.5">
+                            <thead>
+                              <tr style="font-size: 12px; text-align: center;">
+                                <th>No</th>
+                                <th>Nama Karyawan</th>
+                                <th>Subbidang</th>
+                                <th>Kesetiaan</th>
+                                <th>Prestasi Kerja</th>
+                                <th>Tanggung Jawab</th>
+                                <th>Ketaatan</th>
+                                <th>Kejujuran</th>
+                                <th>Kerjasama</th>
+                                <th>Prakarsa</th>
+                                <th>Kepimpinan</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php 
+                                $no=1;
+                                foreach ($norm as $sts) :
+                              ?> 
+                              <tr style="font-size: 12px; text-align:center;">
+                                <td><?php echo $no++; ?></td>
+                                <td><?php echo $sts[0]; ?></td>
+                                <td><?php echo $sts[1]; ?></td>
+                                <td><?php echo $sts[2]; ?></td>
+                                <td><?php echo $sts[3]; ?></td>
+                                <td><?php echo $sts[4]; ?></td>
+                                <td><?php echo $sts[5]; ?></td>
+                                <td><?php echo $sts[6]; ?></td>
+                                <td><?php echo $sts[7]; ?></td>
+                                <td><?php echo $sts[8]; ?></td>
+                                <td><?php echo $sts[9]; ?></td>
+                              </tr> 
+                            <?php endforeach; ?>
+                            </tbody> 
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Hasil Akhir -->
+                    <div class="card shadow mb-4"> 
+                      <br>
+                      <center><h3>Tabel akhir</h3></center>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered" width="100%" cellspacing="0.5">
+                            <thead>
+                              <tr style="font-size: 12px; text-align: center;">
+                                <th>No</th>
+                                <th>Nama Karyawan</th>
+                                <th>Subbidang</th>
+                                <th>Nilai Akhir</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php 
+                                $no=1;
+                                foreach ($wr as $sts) :
+                              ?> 
+                              <tr style="font-size: 12px; text-align:center;">
+                                <td><?php echo $no++; ?></td>
+                                <td><?php echo $sts[0]; ?></td>
+                                <td><?php echo $sts[1]; ?></td>
+                                <td><?php echo $sts[2]; ?></td>
+                              </tr> 
+                            <?php endforeach; ?>
+                            </tbody> 
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Hasil Akhir -->
+                  </div>
+
+                  <!-- End Container Fluid -->
                   </div>
                   <!-- End Nilai -->
+                 
+                <!-- Nilai -->
                 
-                  <?php print_r($bobot)  ?>
-
                 </div>
               </div>
             </div>

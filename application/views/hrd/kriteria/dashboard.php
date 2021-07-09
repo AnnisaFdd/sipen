@@ -30,7 +30,8 @@
                               <tr style="font-size: 12px; text-align: center;">
                                 <th>No</th>
                                 <th>Kriteria</th>
-                                <th>Atribut</th>
+                                <th>Bobot</th>
+                                <th>Keterangan</th>
                                 <th>Action</th>
                               </tr>
                             </thead>
@@ -43,10 +44,10 @@
                                 <td><?php echo $no++; ?></td>
                                 <td><?php echo $sts->nama_kriteria; ?></td>
                                 <td><?php echo $sts->bobot; ?></td>
+                                <td><?php echo $sts->keterangan; ?></td>
                                 <td class="center">
-                                  <?php echo anchor('hrd/nilai/edit/'.$sts->id_kriteria, '<div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>'); ?>
-                                  <?php $onclick = array('onclick'=>"return confirm('Anda yakin untuk menghapus data?')");?>
-                                  <?php echo anchor('hrd/nilai/hapus/'.$sts->id_kriteria, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>',$onclick); ?>
+                                  <?php echo anchor('hrd/kriteria/edit/'.$sts->id_kriteria, '<div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>'); ?>
+            
                                 </td>
                               </tr> 
                             <?php endforeach; ?>
@@ -64,6 +65,8 @@
       </div>
       <!-- End of Main Content -->
 
+      <!-- <?php $onclick = array('onclick'=>"return confirm('Anda yakin untuk menghapus data?')");?> -->
+      <!-- <?php echo anchor('hrd/nilai/hapus/'.$sts->id_kriteria, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>',$onclick); ?> -->
       <!-- Button trigger modal -->
 
    </div>

@@ -20,7 +20,7 @@
                 <?php foreach ($kriteria as $kr ) : ?>
 
 
-                <form method="post" action="<?php echo base_url().'hrd/nilai/update'; ?>">
+                <form method="post" action="<?php echo base_url().'hrd/kriteria/update'; ?>">
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Kriteria</label>
                     <div class="col-sm-8">
@@ -31,10 +31,16 @@
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Bobot</label>
                     <div class="col-sm-8">
-                      <select name="bobot" class="form-control select2" style="width: 100%;" required="required">
-                        <option value="<?php echo $kr->bobot;?>"><?php echo $kr->bobot;?></option>
+                      <input required="required" type="number" name="bobot"  class="form-control" value="<?php echo  $kr->bobot?>" step="0.001">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Keterangan</label>
+                    <div class="col-sm-8">
+                      <select name="keterangan" class="form-control select2" style="width: 100%;" required="required">
+                        <option value="<?php echo $kr->keterangan;?>"><?php echo $kr->keterangan;?></option>
                       </select>
-                      <?php echo form_error('bobot','<div class="text-danger small ml-3">','</div>') ?>
+                      <?php echo form_error('keterangan','<div class="text-danger small ml-3">','</div>') ?>
                     </div>
                   </div>
                   <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
