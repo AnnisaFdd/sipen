@@ -79,6 +79,15 @@ class Model_user extends CI_Model{
 
 	
 	//USER
+	public function get_user($subbidangs){
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->join('subbidang','user.id_subbidang = subbidang.id_subbidang');
+		$this->db->where(array('user.id_subbidang' => $subbidangs));
+		return $this->db->get()->row_array();
+		// $query=$this->db->get();
+		// return $query->result();
+	}
 
 	//karyawan
 	public function get_karyawanall($subbidangs){
@@ -203,13 +212,17 @@ class Model_user extends CI_Model{
 		$this->db->from('kriteria');
 		return $this->db->get()->result_array();
 	}
-	
-	// public function get_namaKriteria(){
-	// 	$this->db->select('nama_kriteria');		
-	// 	$this->db->from('kriteria');
-	// 	return $this->db->get()->result_array();
-	// }
 
+	public function has_same_nilai($karyawan){
+		$this->db->select('*');
+		$this->db->from('nilai');
+		$this->db->join('karyawan','karyawan.id_karyawan = nilai.id_karyawan');
+		$this->db->where(array('nilai.id_karyawan' => $karyawan));
+  		$query=$this->db->get();
+   		return $query->result();
+
+	}
+	
 
 }
 ?>

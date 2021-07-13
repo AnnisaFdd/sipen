@@ -13,7 +13,7 @@
             <div class="col-md-8">
               <div class="card mb-4 py-3 border-left-danger">
                 <div class="card-body">
-                  <h4><i class="far fa-edit"></i> <b >Form Tambah Data Karyawan</b></h4>
+                  <h4><i class="far fa-edit"></i> <b >Form Tambah Data Karyawan <?php echo $user['nama_subbidang']; ?></b></h4>
                   <div class="garis" style="width: 100%; margin-bottom: 2%;"></div>
 
                 <form method="post" action="<?php echo site_url('user/karyawan/tambah_aksi') ?>">
@@ -24,13 +24,20 @@
                     </div>
                   </div>
 
-                  <!-- div class="form-group row">
-                    <label class="col-sm-4 col-form-label">Subbidang</label>
+
+                    <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
                     <div class="col-sm-8">
-                      <input required="required" type="text" name="subbidang" class="form-control" value="<?php echo $karyawan['user.id_subbidang']; ?>"   readonly >
-                      <input type = "text" value = "$va" name = "n" <?= ($va != '' || $va == null) ? '' : 'readonly'; ?>/>
+                      <input required="required" type="date" name="tanggal_lahir" class="form-control" placeholder="Masukkan Tanggal Lahir Karyawan" required="required">
                     </div>
-                  </div> -->
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Alamat</label>
+                    <div class="col-sm-8">
+                      <input required="required" type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat karyawan" required="required">
+                    </div>
+                  </div>
 
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Subbidang</label>

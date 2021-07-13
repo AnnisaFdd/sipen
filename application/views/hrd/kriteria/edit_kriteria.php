@@ -39,6 +39,8 @@
                     <div class="col-sm-8">
                       <select name="keterangan" class="form-control select2" style="width: 100%;" required="required">
                         <option value="<?php echo $kr->keterangan;?>"><?php echo $kr->keterangan;?></option>
+                        <option value="Cost">Cost</option>
+                        <option value="Benefit">Benefit</option>
                       </select>
                       <?php echo form_error('keterangan','<div class="text-danger small ml-3">','</div>') ?>
                     </div>

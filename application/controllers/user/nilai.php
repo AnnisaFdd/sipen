@@ -12,6 +12,7 @@ class Nilai extends CI_Controller{
 	public function index(){
 		$data['usernya'] = $this->db->get_where('user',['username' => $this->session->userdata('username')])->row_array();
 		$id_subbidang =  $this->session->userdata('id_subbidang');
+		$data['user'] = $this->model_user->get_user($id_subbidang);
 		$data['nilai'] = $this->model_user->get_nilai($id_subbidang);
 		$this->load->view('user/templates/header');
 		$this->load->view('user/templates/sidebar',$data);
@@ -22,6 +23,8 @@ class Nilai extends CI_Controller{
 
 	public function edit($id_nilai){
 		$data['usernya'] = $this->db->get_where('user',['username' => $this->session->userdata('username')])->row_array();
+		$id_subbidang =  $this->session->userdata('id_subbidang');
+		$data['user'] = $this->model_user->get_user($id_subbidang);
 		$data['nilai'] = $this->model_user->get_nilaiAll($id_nilai);
 		$data['karyawan'] = $this->model_user->get_karyawanN();
 		$this->load->view('user/templates/header');
@@ -69,6 +72,7 @@ class Nilai extends CI_Controller{
 	public function tambah(){
 		$data['usernya'] = $this->db->get_where('user',['username' => $this->session->userdata('username')])->row_array();
 		$id_subbidang =  $this->session->userdata('id_subbidang');
+		$data['user'] = $this->model_user->get_user($id_subbidang);
 		$data['karyawan'] = $this->model_user->get_karyawan_sub_nilai($id_subbidang);
 		$this->load->view('user/templates/header');
 		$this->load->view('user/templates/sidebar',$data);
@@ -79,6 +83,8 @@ class Nilai extends CI_Controller{
 	public function tambah_aksi(){
 
 		$this->form_validation->set_rules('nama', 'Nama Karyawan','required');
+		$this->form_validation->set_rules('nama', 'Nama Karyawan', 'required|is_unique[nilai.id_karyawan]');
+		// $this->form_validation->set_rules('', 'Role Name', 'trim|required|xss_clean|is_unique[table_name.table_field]');
 
 		if($this->form_validation->run()== FALSE){
 			$this->tambah();
@@ -92,6 +98,11 @@ class Nilai extends CI_Controller{
 			$C6 = $this->input->post('c6');
 			$C7 = $this->input->post('c7');
 			$C8 = $this->input->post('c8');
+			$has_same = $this->model_user->has_same_nilai($namaa);
+
+			if(count($has_same)>0){
+				$this->session->set_flashdata('pesan','<div class="alert alert-danger alert dismissible fade show" role="alert">Karyawan Telah Dinilai<button type="button" class="close" data-dismiss="alert" aria=label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			}
 
 
 			$data = array(

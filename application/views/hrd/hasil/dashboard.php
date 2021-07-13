@@ -56,7 +56,7 @@
                       <center><h3>Data Nilai Karyawan</h3></center>
                       <div class="card-body">
                         <div class="table-responsive">
-                          <table class="table table-bordered" width="100%" cellspacing="0.5">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0.5">
                             <thead>
                               <tr style="font-size: 12px; text-align: center;">
                                 <th>No</th>

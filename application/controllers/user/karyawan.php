@@ -12,8 +12,8 @@ class Karyawan extends CI_Controller{
 	public function index(){
 		$data['usernya'] = $this->db->get_where('user',['username' => $this->session->userdata('username')])->row_array();
 		$id_subbidang =  $this->session->userdata('id_subbidang');
+		$data['user'] = $this->model_user->get_user($id_subbidang);
 		$data['karyawan'] = $this->model_user->get_karyawanall($id_subbidang);
-		// $data['cek'] = $this->input->post('nama');
 		$this->load->view('user/templates/header');
 		$this->load->view('user/templates/sidebar',$data);
 		$this->load->view('user/karyawan/dashboard', $data);
@@ -23,6 +23,8 @@ class Karyawan extends CI_Controller{
 
 	public function edit($id_karyawan){
 		$data['usernya'] = $this->db->get_where('user',['username' => $this->session->userdata('username')])->row_array();
+		$id_subbidang =  $this->session->userdata('id_subbidang');
+		$data['user'] = $this->model_user->get_user($id_subbidang);
 		$data['karyawan'] = $this->model_user->get_karyawan_sub($id_karyawan);
 		$data['subbidang'] = $this->model_user->get_subbidang();
 		$this->load->view('user/templates/header');
@@ -33,12 +35,21 @@ class Karyawan extends CI_Controller{
 
 
 	public function update(){
+		$this->form_validation->set_rules('nama_karyawan', 'Nama Karyawan','required');
+		
+		if($this->form_validation->run()== FALSE){
+			$this->edit();
+		}else{
 		$id = $this->input->post('id_karyawan');
 		$nama = $this->input->post('nama_karyawan');
 		$subbidang = $this->input->post('subbidang');
+		$tanggal = $this->input->post('tanggal_lahir');
+		$alamat = $this->input->post('alamat');
 
 		$data = array(
 			'nama_karyawan' => $nama,
+			'tanggal_lahir' => $tanggal,
+			'alamat' => $alamat,
 			'id_subbidang' => $subbidang,
 		);
 
@@ -48,12 +59,14 @@ class Karyawan extends CI_Controller{
 		$this->model_user->update_karyawan($where,$data,'karyawan');
 		$this->session->set_flashdata('pesan','<div class="alert alert-success alert dismissible fade show" role="alert">Data Karyawan Berhasil di Update<button type="button" class="close" data-dismiss="alert" aria=label="Close"><span aria-hidden="true">&times;</span></button></div>');
 		redirect('user/karyawan');
+		}
 
 	}
 
 	public function tambah(){
 		$data['usernya'] = $this->db->get_where('user',['username' => $this->session->userdata('username')])->row_array();
-		// $data['subbidang'] = $this->model_user->get_subbidang_user();
+		$id_subbidang =  $this->session->userdata('id_subbidang');
+		$data['user'] = $this->model_user->get_user($id_subbidang);
 		$id_subbidang =  $this->session->userdata('id_subbidang');
 		$data['karyawan'] = $this->model_user->get_subbidang_karyawan($id_subbidang);
 		$this->load->view('user/templates/header');
@@ -70,10 +83,14 @@ class Karyawan extends CI_Controller{
 			$this->tambah();
 		}else{
 			$nama = $this->input->post('nama_karyawan');
+			$tanggal = $this->input->post('tanggal_lahir');
+			$alamat = $this->input->post('alamat');
 			$subbidangg = $this->input->post('subbidang');
 
 			$data = array(
 				'nama_karyawan' => $nama,
+				'tanggal_lahir' => $tanggal,
+				'alamat' => $alamat,
 				'id_subbidang' => $subbidangg,
 			);
 			

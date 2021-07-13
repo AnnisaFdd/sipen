@@ -27,7 +27,7 @@
                     <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalsiaga']; ?></div>
                   </div>
                   <div class="col-auto">
-                    <i class="fas fa-business-time fa-4x text-light"></i>
+                    <i class="fas fa-exclamation-triangle fa-4x text-light"></i>
                   </div>
                 </div>
               </div>
@@ -44,7 +44,7 @@
                     <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalsdm']; ?></div>
                   </div>
                   <div class="col-auto">
-                    <i class="fas fa-tools fa-4x text-light"></i>
+                    <i class="fas fa-users fa-4x text-light"></i>
                   </div>
                 </div>
               </div>
@@ -61,7 +61,7 @@
                     <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalyansokes']; ?></div>
                   </div>
                   <div class="col-auto">
-                    <i class="fas fa-shuttle-van fa-4x text-light"></i>
+                    <i class="fas fa-ambulance fa-4x text-light"></i>
                   </div>
                 </div>
               </div>
@@ -78,7 +78,7 @@
                     <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalkeuangan']; ?></div>
                   </div>
                   <div class="col-auto">
-                    <i class="fas fa-money-check fa-4x text-light"></i>
+                    <i class="fas fa-coins fa-4x text-light"></i>
                   </div>
                 </div>
               </div>
@@ -95,7 +95,7 @@
                     <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalumum']; ?></div>
                   </div>
                   <div class="col-auto">
-                    <i class="fas fa-layer-group fa-4x text-light"></i>
+                    <i class="fas fa-archive fa-4x text-light"></i>
                   </div>
                 </div>
               </div>
@@ -112,7 +112,7 @@
                     <div class="h3 mb-0 font-weight-bold text-light"><?php echo $count_data['totalhumas']; ?></div>
                   </div>
                   <div class="col-auto">
-                    <i class="far fa-building fa-4x text-light"></i>
+                    <i class="fas fa-handshake fa-4x text-light"></i>
                   </div>
                 </div>
               </div>

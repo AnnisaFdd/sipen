@@ -12,7 +12,7 @@
             <div class="col-md-12">
               <div class="card mb-4 py-3 border-left-danger">
                 <div class="card-body">
-                  <h4><i class="far fa-edit"></i> <b >Kelola Data Penilaian</b></h4>
+                  <h4><i class="far fa-edit"></i> <b >Kelola Data Nilai <?php echo $user['nama_subbidang']; ?> </b></h4>
                   <div class="garis" style="width: 100%; margin-bottom: 2%;"></div>
                 </div>
 

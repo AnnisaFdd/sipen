@@ -5,7 +5,7 @@
       <!-- Begin Page Content -->
       <div class="container-fluid">
         <div class="alert bg-content" role="alert">
-          <i class="fas fa-plus-square"></i> Edit Data Karyawan
+          <i class="fas fa-plus-square"></i> Edit Data Karyawan 
         </div>
        
       <?php echo $this->session->flashdata('pesan');?>
@@ -15,7 +15,7 @@
             <div class="col-md-6">
               <div class="card mb-4 py-3 border-left-danger">
                 <div class="card-body">
-                  <h4><i class="far fa-edit"></i> <b >Form Edit Karyawan</b></h4>
+                  <h4><i class="far fa-edit"></i> <b >Form Edit Karyawan <?php echo $user['nama_subbidang']; ?></b></h4>
                   <div class="garis" style="width: 100%; margin-bottom: 2%;"></div>
                 <?php foreach ($karyawan as $kr ) : ?>
 
@@ -29,6 +29,24 @@
                       <input required="required" type="text" name="nama_karyawan"  class="form-control" value="<?php echo  $kr->nama_karyawan?>">
                     </div>
                   </div>
+
+
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                    <div class="col-sm-8">
+                      <input required="required" type="date" name="tanggal_lahir"  class="form-control" value="<?php echo  $kr->tanggal_lahir?>">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Alamat</label>
+                    <div class="col-sm-8">
+                      <input required="required" type="text" name="alamat"  class="form-control" value="<?php echo  $kr->alamat?>">
+                    </div>
+                  </div>
+
+
                   <button type="submit" name="submit" class="btn btn-primary">Simpan</button>                 
                 </form>
 

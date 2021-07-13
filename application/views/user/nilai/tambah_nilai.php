@@ -13,7 +13,7 @@
             <div class="col-md-8">
               <div class="card mb-4 py-3 border-left-danger">
                 <div class="card-body">
-                  <h4><i class="far fa-edit"></i> <b >Form Tambah Data Penilaian</b></h4>
+                  <h4><i class="far fa-edit"></i> <b >Form Tambah Data Penilaian <?php echo $user['nama_subbidang']; ?></b></h4>
                   <div class="garis" style="width: 100%; margin-bottom: 2%;"></div>
 
                 <form method="post" action="<?php echo site_url('user/nilai/tambah_aksi') ?>">
@@ -33,56 +33,56 @@
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Kesetiaan</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="c1" class="form-control" placeholder="Masukkan Nilai Kesetiaan" required="required">
+                      <input required="required" type="number" name="c1" min="0" max="100" class="form-control" placeholder="Masukkan Nilai Kesetiaan" required="required">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Prestasi Kerja</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="c2" class="form-control" placeholder="Masukkan Nilai Prestasi Kerja" required="required">
+                      <input required="required" type="number" name="c2" min="0" max="100" class="form-control" placeholder="Masukkan Nilai Prestasi Kerja" required="required">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Tanggung Jawab</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="c3" class="form-control" placeholder="Masukkan Nilai Tanggunag Jawab" required="required">
+                      <input required="required" type="number" name="c3" min="0" max="100" class="form-control" placeholder="Masukkan Nilai Tanggunag Jawab" required="required">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Ketaatan</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="c4" class="form-control" placeholder="Masukkan Nilai Ketaatan" required="required">
+                      <input required="required" type="number" name="c4" min="0" max="100" class="form-control" placeholder="Masukkan Nilai Ketaatan" required="required">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Kejujuran</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="c5" class="form-control" placeholder="Masukkan Nilai Kejujuran" required="required">
+                      <input required="required" type="number" name="c5" min="0" max="100" class="form-control" placeholder="Masukkan Nilai Kejujuran" required="required">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Kerja Sama</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="c6" class="form-control" placeholder="Masukkan Nilai Kerjasama" required="required">
+                      <input required="required" type="number" name="c6" min="0" max="100" class="form-control" placeholder="Masukkan Nilai Kerjasama" required="required">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Prakarsa</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="c7" class="form-control" placeholder="Masukkan Nilai Prakarsa" required="required">
+                      <input required="required" type="number" name="c7" min="0" max="100" class="form-control" placeholder="Masukkan Nilai Prakarsa" required="required">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Kepemimpinan</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="c8" class="form-control" placeholder="Masukkan Nama Kepemimpinan" required="required">
+                      <input required="required" type="number" name="c8" min="0" max="100" class="form-control" placeholder="Masukkan Nama Kepemimpinan" required="required">
                     </div>
                   </div>
 

@@ -15,7 +15,7 @@
             <div class="col-md-6">
               <div class="card mb-4 py-3 border-left-danger">
                 <div class="card-body">
-                  <h4><i class="far fa-edit"></i> <b >Form Edit Penilaian</b></h4>
+                  <h4><i class="far fa-edit"></i> <b >Form Edit Penilaian <?php echo $user['nama_subbidang']; ?></b></h4>
                   <div class="garis" style="width: 100%; margin-bottom: 2%;"></div>
                 <?php foreach ($nilai as $kr ) : ?>
 
@@ -33,21 +33,21 @@
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Kesetiaan</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="C1"  class="form-control" value="<?php echo  $kr->C1?>">
+                      <input required="required" type="number" name="C1"   min="0" max="100" class="form-control" value="<?php echo  $kr->C1?>" >
                     </div>
                   </div>
 
                   <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Prestasi Kerja</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="C2"  class="form-control" value="<?php echo  $kr->C2?>">
+                      <input required="required" type="number" name="C2"  min="0" max="100" class="form-control" value="<?php echo  $kr->C2?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Tanggung Jawab</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="C3"  class="form-control" value="<?php echo  $kr->C3?>">
+                      <input required="required" type="number" name="C3" min="0" max="100"  class="form-control" value="<?php echo  $kr->C3?>">
                     </div>
                   </div>
 
@@ -61,28 +61,28 @@
                   <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Kejujuran</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="C5"  class="form-control" value="<?php echo  $kr->C5?>">
+                      <input required="required" type="number" name="C5"  min="0" max="100" class="form-control" value="<?php echo  $kr->C5?>">
                     </div>
                   </div>                  
 
                   <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Kerjasama</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="C6"  class="form-control" value="<?php echo  $kr->C6?>">
+                      <input required="required" type="number" name="C6" min="0" max="100" class="form-control" value="<?php echo  $kr->C6?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Prakarsa</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="C7"  class="form-control" value="<?php echo  $kr->C7?>">
+                      <input required="required" type="number" name="C7" min="0" max="100" class="form-control" value="<?php echo  $kr->C7?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Kepemimpinan</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="C8"  class="form-control" value="<?php echo  $kr->C8?>">
+                      <input required="required" type="number" name="C8" min="0" max="100" class="form-control" value="<?php echo  $kr->C8?>">
                     </div>
                   </div>
 
