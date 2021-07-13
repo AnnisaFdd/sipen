@@ -51,7 +51,7 @@
                       </div>
                     </div>
                     <!-- Nilai -->
-                      <div class="card shadow mb-4"> 
+                     <div class="card shadow mb-4"> 
                       <br>
                       <center><h3>Data Nilai Karyawan</h3></center>
                       <div class="card-body">
@@ -93,7 +93,7 @@
                           </table>
                         </div>
                       </div>
-                    </div>
+                    </div> 
                     <!-- Normalisasi -->
                      <div class="card shadow mb-4"> 
                       <br>
@@ -124,7 +124,7 @@
                               <tr style="font-size: 12px; text-align:center;">
                                 <td><?php echo $no++; ?></td>
                                 <td><?php echo $sts[8]; ?></td>
-                                <td><?php echo $sts[10]; ?></td>
+                                <td><?php echo $sts[12]; ?></td>
                                 <td><?php echo $sts[0]; ?></td>
                                 <td><?php echo $sts[1]; ?></td>
                                 <td><?php echo $sts[2]; ?></td>
@@ -139,11 +139,11 @@
                           </table>
                         </div>
                       </div>
-                    </div>
+                    </div>  
                   
                   <!-- End Normalisasi -->
                   <!-- Normalisasi -->
-                     <div class="card shadow mb-4"> 
+                    <div class="card shadow mb-4"> 
                       <br>
                       <center><h3>Tabel Normalisasi</h3></center>
                       <div class="card-body">
@@ -172,8 +172,6 @@
                               <tr style="font-size: 12px; text-align:center;">
                                 <td><?php echo $no++; ?></td>
                                 <td><?php echo $sts[0]; ?></td>
-                                <td><?php echo $sts[1]; ?></td>
-                                <td><?php echo $sts[2]; ?></td>
                                 <td><?php echo $sts[3]; ?></td>
                                 <td><?php echo $sts[4]; ?></td>
                                 <td><?php echo $sts[5]; ?></td>
@@ -181,13 +179,15 @@
                                 <td><?php echo $sts[7]; ?></td>
                                 <td><?php echo $sts[8]; ?></td>
                                 <td><?php echo $sts[9]; ?></td>
+                                <td><?php echo $sts[10]; ?></td>
+                                <td><?php echo $sts[11]; ?></td>
                               </tr> 
                             <?php endforeach; ?>
                             </tbody> 
                           </table>
                         </div>
                       </div>
-                    </div>
+                    </div> 
 
                     <!-- Hasil Akhir -->
                     <div class="card shadow mb-4"> 
@@ -212,15 +212,15 @@
                               <tr style="font-size: 12px; text-align:center;">
                                 <td><?php echo $no++; ?></td>
                                 <td><?php echo $sts[0]; ?></td>
-                                <td><?php echo $sts[1]; ?></td>
-                                <td><?php echo $sts[2]; ?></td>
+                                <td><?php echo $sts[3]; ?></td>
+                                <td><?php echo $sts[4]; ?></td>
                               </tr> 
                             <?php endforeach; ?>
                             </tbody> 
                           </table>
                         </div>
                       </div>
-                    </div>
+                    </div> 
                     <!-- End Hasil Akhir -->
                   </div>
 

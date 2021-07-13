@@ -28,7 +28,7 @@ class Hasil extends CI_Controller{
 			foreach ($potong as $p) {
 				$get_idx = array_search($p,$potong);
 				if($get_idx === array_search($satu[$get_idx],$potong)){
-					if($p == $satu['nama_karyawan'] || $p == $satu['nama_subbidang']){
+					if($p == $satu['nama_karyawan'] || $p == $satu['nama_subbidang'] || $p == $satu['tanggal_lahir'] || $p == $satu['alamat']  ){
 						$get_idx = $p;
 					}else if($p>=0 && $p<=50){
 						$get_idx = 1;
@@ -60,9 +60,8 @@ class Hasil extends CI_Controller{
 
 		// jumlah each column
 		//i kolom dan j baris
-		for($i=0; $i<=max(array_map('count', $bobot))-4; $i++){
+		for($i=0; $i<=max(array_map('count', $bobot))-6; $i++){
 			$temp = $bobot[0][$i];
-			// $min = $bobot[0][$i];
 			if($new[$i]=='Benefit'){
 				for($j=0; $j<=count($bobot)-1; $j++){
 					if ($temp<$bobot[$j][$i]){
@@ -79,25 +78,29 @@ class Hasil extends CI_Controller{
 			}
 			array_push($jumlah_kolom, $temp);
 		}
+		
 			
 		
 		// hitung normalisasi
 		foreach ($bobot as $dua) {
 			$potong = array_slice($dua, 0); //copy array agar tetap
-			array_push($norm, $dua[8], $dua[10]); //push 2 kolom pertama
-			$potong = array_splice($potong, 0, count($potong)-3); //split selain 2 kolom pertama
+			array_push($norm, $dua[8], $dua[9], $dua[10], $dua[12]); //push 2 kolom pertama
+			$potong = array_splice($potong, 0, count($potong)-5); //split selain 2 kolom pertama
 	
 			for($i=0; $i<=count($potong)-1; $i++){
 				$hasil = round($potong[$i]/$jumlah_kolom[$i], 2);
 				array_push($norm, $hasil);
 			}
-			
 
 		}
+
 		$norm = array_chunk($norm, max(array_map('count', $asarray))-3); // array to matriks based column
 		$data['norm'] = $norm;
+		
 
-		//Hasil, array of array to array
+
+
+		// //Hasil, array of array to array
 		foreach($data['result'] as $k=>$v) {
  		   $new[$k] = $v['bobot'];
 		}
@@ -106,8 +109,8 @@ class Hasil extends CI_Controller{
 
 		foreach ($norm as $tiga) {
 			$potong = array_slice($tiga, 0); //copy array agar tetap
-			array_push($result, $tiga[0], $tiga[1]); //push 2 kolom pertama
-			$potong = array_splice($potong, 2, count($potong)); //split selain 2 kolom pertama
+			array_push($result, $tiga[0], $tiga[1],$tiga[2], $tiga[3]); //push 4 kolom pertama
+			$potong = array_splice($potong, 4, count($potong)); //split selain 4 kolom pertama
 			$count=0;
 			for($i=0; $i<=count($potong)-1; $i++){
 				$count = $count+$potong[$i]*$new[$i];
@@ -119,14 +122,12 @@ class Hasil extends CI_Controller{
 
 		$result = array_chunk($result, max(array_map('count', $asarray))-10); // array to matriks based column
 		
-
-
-		//Final
+		// //Final
 
 		function invenDescSort($item1,$item2)
 		{
-		    if ($item1[2] == $item2[2]) return 0;
-		    return ($item1[2] < $item2[2]) ? 1 : -1;
+		    if ($item1[4] == $item2[4]) return 0;
+		    return ($item1[4] < $item2[4]) ? 1 : -1;
 		}
 		usort($result,'invenDescSort');
 
