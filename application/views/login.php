@@ -13,7 +13,7 @@
               <div class="col-lg">
                 <div class="p-5">
                   <div class="text-center">
-                     <img src="<?= base_url('assets/'); ?>img/coba.png" width="80%">
+                     <img src="<?= base_url('assets/'); ?>img/login3.png" width="100%">
                   </div>
                   <br>
 

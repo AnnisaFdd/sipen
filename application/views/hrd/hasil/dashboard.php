@@ -187,7 +187,7 @@
                           </table>
                         </div>
                       </div>
-                    </div> 
+                    </div>  
 
                     <!-- Hasil Akhir -->
                     <div class="card shadow mb-4"> 
@@ -220,7 +220,7 @@
                           </table>
                         </div>
                       </div>
-                    </div> 
+                    </div>  
                     <!-- End Hasil Akhir -->
                   </div>
 

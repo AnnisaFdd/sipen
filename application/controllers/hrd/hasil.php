@@ -57,6 +57,7 @@ class Hasil extends CI_Controller{
 		//Normalisasi
 		$norm = array();
 		$jumlah_kolom = array();
+		// $output= array();
 
 		// jumlah each column
 		//i kolom dan j baris
@@ -78,27 +79,27 @@ class Hasil extends CI_Controller{
 			}
 			array_push($jumlah_kolom, $temp);
 		}
-		
-			
-		
+		 
+
 		// hitung normalisasi
 		foreach ($bobot as $dua) {
 			$potong = array_slice($dua, 0); //copy array agar tetap
 			array_push($norm, $dua[8], $dua[9], $dua[10], $dua[12]); //push 2 kolom pertama
 			$potong = array_splice($potong, 0, count($potong)-5); //split selain 2 kolom pertama
-	
-			for($i=0; $i<=count($potong)-1; $i++){
-				$hasil = round($potong[$i]/$jumlah_kolom[$i], 2);
-				array_push($norm, $hasil);
-			}
-
+			 
+				for ($i=0; $i<=count($potong)-1; $i++){
+					if ($new[$i] == "Benefit") {
+						$hasil = round($potong[$i]/$jumlah_kolom[$i], 2);
+						array_push($norm, $hasil);
+					}else{
+						$hasil = round($jumlah_kolom[$i]/$potong[$i], 2);
+						array_push($norm, $hasil);
+					}
+				}
 		}
 
 		$norm = array_chunk($norm, max(array_map('count', $asarray))-3); // array to matriks based column
 		$data['norm'] = $norm;
-		
-
-
 
 		// //Hasil, array of array to array
 		foreach($data['result'] as $k=>$v) {
@@ -122,7 +123,7 @@ class Hasil extends CI_Controller{
 
 		$result = array_chunk($result, max(array_map('count', $asarray))-10); // array to matriks based column
 		
-		// //Final
+		//Final
 
 		function invenDescSort($item1,$item2)
 		{
@@ -133,18 +134,12 @@ class Hasil extends CI_Controller{
 
 		$data['wr'] = $result;
 
-
-
 		$this->load->view('hrd/templates_hrd/header');
 		$this->load->view('hrd/templates_hrd/sidebar',$data);
 		$this->load->view('hrd/hasil/dashboard', $data);
 		$this->load->view('hrd/templates_hrd/footer');
-
-
-
 		
 	}
-
 
 }
 ?>
