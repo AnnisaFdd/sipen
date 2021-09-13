@@ -2,46 +2,26 @@
 
 class Model_user extends CI_Model{
 
-	// HRD
-
-	// Karyawan
-	public function karyawan(){
-		$this->db->select('*');
-		$this->db->from('karyawan');
-		$this->db->join('subbidang','karyawan.id_subbidang = subbidang.id_subbidang');
-		$query=$this->db->get();
-		return $query->result();
-	}
-
-	//Edit Karyawan
-	public function get_karyawan($where){
-		$this->db->select('*');
-		$this->db->from('karyawan');
-		$this->db->join('subbidang','karyawan.id_subbidang = subbidang.id_subbidang');
-		$this->db->where(array('id_karyawan' => $where));
-		$query=$this->db->get();
-		return $query->result();
-	}
 
 	public function get_subbidang(){
 		$query = $this->db->query('SELECT * FROM subbidang');
    		return $query->result();
 	}
 	
-	public function update_karyawan($where, $data,$table){
+	public function update_pegawai($where, $data,$table){
 		$this->db->where($where);
 		$this->db->update($table, $data);
 	}
 
-	//Tambah Karyawan
-	public function insert_karyawan($data){
-		$this->db->insert('karyawan',$data);
+	//Tambah Pegawai
+	public function insert_pegawai($data){
+		$this->db->insert('pegawai',$data);
 	}
 
 	//Hapus Karyawan
-	public function hapus_karyawan($where){
+	public function hapus_pegawai($where){
 		$this->db->where($where);
-		$this->db->delete('karyawan');
+		$this->db->delete('pegawai');
 	}
 
 	//kriteria
@@ -85,40 +65,39 @@ class Model_user extends CI_Model{
 		$this->db->join('subbidang','user.id_subbidang = subbidang.id_subbidang');
 		$this->db->where(array('user.id_subbidang' => $subbidangs));
 		return $this->db->get()->row_array();
-		// $query=$this->db->get();
-		// return $query->result();
 	}
 
-	//karyawan
-	public function get_karyawanall($subbidangs){
+	//Pegawai
+	//Tampilan Pegawai
+	public function get_pegawaiall($subbidangs){
 		$this->db->select('*');
-		$this->db->from('karyawan');
-		$this->db->join('subbidang','karyawan.id_subbidang = subbidang.id_subbidang');
-		$this->db->where(array('karyawan.id_subbidang' => $subbidangs));
+		$this->db->from('pegawai');
+		$this->db->join('subbidang','subbidang.id_subbidang = pegawai.id_subbidang');
+		$this->db->where(array('pegawai.id_subbidang' => $subbidangs));
 		$query=$this->db->get();
 		return $query->result();
 	}
 
-	//Edit Karyawan
-	public function get_karyawan_sub($where){
+	//Edit Pegawai
+	public function get_pegawai_sub($where){
 		$this->db->select('*');
-		$this->db->from('karyawan');
-		$this->db->join('subbidang','karyawan.id_subbidang = subbidang.id_subbidang');
-		$this->db->where(array('id_karyawan' => $where));
+		$this->db->from('pegawai');
+		$this->db->join('subbidang','pegawai.id_subbidang = subbidang.id_subbidang');
+		$this->db->where(array('id_pegawai' => $where));
 		$query=$this->db->get();
 		return $query->result();
 	}
 
 	public function is_ada_nilai($id){
 		$this->db->select('*');
-		$this->db->from('karyawan');
-		$this->db->join('nilai','karyawan.id_karyawan = nilai.id_karyawan');
-		$this->db->where(array('nilai.id_karyawan' => $id));
+		$this->db->from('pegawai');
+		$this->db->join('nilai','pegawai.id_pegawai = nilai.id_pegawai');
+		$this->db->where(array('nilai.id_pegawai' => $id));
 		$query=$this->db->get();
    		return $query->result();
 	}
 
-	public function get_subbidang_karyawan($where){
+	public function get_subbidang_pegawai($where){
 		$this->db->select('*');
 		$this->db->from('user');
 		$this->db->join('subbidang','user.id_subbidang = subbidang.id_subbidang');
@@ -127,27 +106,14 @@ class Model_user extends CI_Model{
    		return $query->result();
 	}
 
-	//Tambah User
-	// I am a fucking awesome baby, whatever reason i keeping alive, i am a baddest bitch, i can fucking do it
-	// YOOO I AM bad bitch, gotta ruled the world... FUCK MISOGYNY
-	/*public function get_subbidang_user($where){
-		$this->db->select('user.nama_subbidang');
-		$this->db->from('subbidang');
-		$this->db->join('karyawan','subbidang.id_subbidang = karyawan.id_subbidang');
-		$this->db->join('user','subbidang.id_subbidang = user.id_subbidang');
-		$this->db->where(array('user.id_subbidang' => $where));	
-		$query=$this->db->get();
-		return $query->result();
-
-	}*/
 
 	//Nilai
 	public  function get_nilai($subbidang){
 		$this->db->select('*');
 		$this->db->from('nilai');
-		$this->db->join('karyawan','karyawan.id_karyawan = nilai.id_karyawan');
-		$this->db->join('subbidang','karyawan.id_subbidang = subbidang.id_subbidang');
-		$this->db->where(array('karyawan.id_subbidang' => $subbidang));
+		$this->db->join('pegawai','pegawai.id_pegawai = nilai.id_pegawai');
+		$this->db->join('subbidang','pegawai.id_subbidang = subbidang.id_subbidang');
+		$this->db->where(array('pegawai.id_subbidang' => $subbidang));
 		$query=$this->db->get();
 		return $query->result();
 
@@ -156,7 +122,7 @@ class Model_user extends CI_Model{
 	public function get_nilaiAll($where){
 		$this->db->select('*');
 		$this->db->from('nilai');
-		$this->db->join('karyawan','karyawan.id_karyawan = nilai.id_karyawan');
+		$this->db->join('pegawai','pegawai.id_pegawai = nilai.id_pegawai');
 		$this->db->where(array('nilai.id_nilai' => $where));
 		$query=$this->db->get();
 		return $query->result();
@@ -167,8 +133,8 @@ class Model_user extends CI_Model{
 		$this->db->update($table, $data);
 	}
 
-	public function get_karyawanN(){
-		$query = $this->db->query('SELECT * FROM karyawan');
+	public function get_pegawaiN(){
+		$query = $this->db->query('SELECT * FROM pegawai');
    		return $query->result();
 	}
 
@@ -177,10 +143,10 @@ class Model_user extends CI_Model{
 		$this->db->delete('nilai');
 	}	
 
-	public function get_karyawan_sub_nilai($where){
+	public function get_pegawai_sub_nilai($where){
 		$this->db->select('*');
-		$this->db->from('karyawan');
-		$this->db->join('subbidang','karyawan.id_subbidang = subbidang.id_subbidang');
+		$this->db->from('pegawai');
+		$this->db->join('subbidang','pegawai.id_subbidang = subbidang.id_subbidang');
 		$this->db->where(array('subbidang.id_subbidang' => $where));
 		$query=$this->db->get();
 		return $query->result();
@@ -190,12 +156,21 @@ class Model_user extends CI_Model{
 		$this->db->insert('nilai',$data);
 	}
 
+	public function has_same_pegawai($id){
+		$this->db->select('*');
+		$this->db->from('nilai');
+		$this->db->where(array('id_pegawai' => $id));
+  		$query=$this->db->get();
+   		return $query->result();
+	}
+
+
 	//HRD Nilai
 	public function get_nilaiK(){
 		$this->db->select('*');		
 		$this->db->from('nilai');
-		$this->db->join('karyawan','karyawan.id_karyawan = nilai.id_karyawan');
-		$this->db->join('subbidang','karyawan.id_subbidang = subbidang.id_subbidang');
+		$this->db->join('pegawai','pegawai.id_pegawai = nilai.id_pegawai');
+		$this->db->join('subbidang','pegawai.id_subbidang = subbidang.id_subbidang');
 		$this->db->order_by("nilai.id_nilai", "asc");
 		$query=$this->db->get();
 		return $query->result();
@@ -223,6 +198,14 @@ class Model_user extends CI_Model{
 
 	}
 	
+	public function get_nilai_bobot(){
+		$this->db->select_sum('bobot');
+		$result = $this->db->get('kriteria')->row();  
+		return $result->bobot;
+   }
+
+
+
 
 }
 ?>

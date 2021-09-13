@@ -5,7 +5,7 @@
       <!-- Begin Page Content -->
       <div class="container-fluid">
         <div class="alert bg-content" role="alert">
-          <i class="fas fa-plus-square"></i> Edit Data Karyawan 
+          <i class="fas fa-plus-square"></i> Edit Data Pegawai 
         </div>
        
       <?php echo $this->session->flashdata('pesan');?>
@@ -15,26 +15,31 @@
             <div class="col-md-6">
               <div class="card mb-4 py-3 border-left-danger">
                 <div class="card-body">
-                  <h4><i class="far fa-edit"></i> <b >Form Edit Karyawan <?php echo $user['nama_subbidang']; ?></b></h4>
+                  <h4><i class="far fa-edit"></i> <b >Form Edit Pegawai <?php echo $user['nama_subbidang']; ?></b></h4>
                   <div class="garis" style="width: 100%; margin-bottom: 2%;"></div>
-                <?php foreach ($karyawan as $kr ) : ?>
+                <?php foreach ($pegawai as $kr ) : ?>
 
 
-                <form method="post" action="<?php echo base_url().'user/karyawan/update'; ?>">
+                <form method="post" action="<?php echo base_url().'user/pegawai/update'; ?>">
                   <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">Nama Karyawan</label>
+                    <label class="col-sm-4 col-form-label">Nama Pegawai</label>
                     <div class="col-sm-8">
-                      <input type="hidden" name="id_karyawan" class="form-control" value="<?php echo $kr->id_karyawan?>">
+                      <input type="hidden" name="id_pegawai" class="form-control" value="<?php echo $kr->id_pegawai?>">
                       <input type="hidden" name="subbidang" class="form-control" value="<?php echo $kr->id_subbidang?>">
-                      <input required="required" type="text" name="nama_karyawan"  class="form-control" value="<?php echo  $kr->nama_karyawan?>">
+                      <input required="required" type="text" name="nama_pegawai"  class="form-control" value="<?php echo  $kr->nama_pegawai?>">
                     </div>
                   </div>
 
 
-                  <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                   <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Jenis Kelamin</label>
                     <div class="col-sm-8">
-                      <input required="required" type="date" name="tanggal_lahir"  class="form-control" value="<?php echo  $kr->tanggal_lahir?>">
+                      <select name="jenis_kelamin" class="form-control select2" style="width: 100%;" required="required">
+                        <option value="<?php echo $kr->jenis_kelamin;?>"><?php echo $kr->jenis_kelamin;?></option>
+                        <option value="pria">Pria</option>
+                        <option value="wanita">Wanita</option>
+                      </select>
+                      <?php echo form_error('jenis_kelamin','<div class="text-danger small ml-3">','</div>') ?>
                     </div>
                   </div>
 

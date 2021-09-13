@@ -29,7 +29,7 @@
                             <thead>
                               <tr style="font-size: 12px; text-align: center;">
                                 <th>No</th>
-                                <th>Nama Karyawan</th>
+                                <th>Nama Pegawai</th>
                                 <th>Kesetiaan</th>
                                 <th>Prestasi Kerja</th>
                                 <th>Tanggung Jawab</th>
@@ -48,7 +48,7 @@
                               ?> 
                               <tr style="font-size: 12px; text-align:center;">
                                 <td><?php echo $no++; ?></td>
-                                <td><?php echo $sts->nama_karyawan; ?></td>
+                                <td><?php echo $sts->nama_pegawai; ?></td>
                                 <td><?php echo $sts->C1; ?></td>
                                 <td><?php echo $sts->C2; ?></td>
                                 <td><?php echo $sts->C3; ?></td>

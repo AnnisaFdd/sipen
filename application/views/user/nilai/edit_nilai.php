@@ -22,11 +22,11 @@
 
                 <form method="post" action="<?php echo base_url().'user/nilai/update'; ?>">
                   <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">Nama Karyawan</label>
+                    <label class="col-sm-4 col-form-label">Nama Pegawai</label>
                     <div class="col-sm-8">
                       <input type="hidden" name="id_nilai" class="form-control" value="<?php echo $kr->id_nilai?>">
-                      <input type="hidden" name="id_karyawan" class="form-control" value="<?php echo $kr->id_karyawan?>">
-                      <input required="required" type="text" name="nama_karyawan"  class="form-control" value="<?php echo  $kr->nama_karyawan?>" readonly>
+                      <input type="hidden" name="id_pegawai" class="form-control" value="<?php echo $kr->id_pegawai?>">
+                      <input required="required" type="text" name="nama_pegawai"  class="form-control" value="<?php echo  $kr->nama_pegawai?>" readonly>
                     </div>
                   </div>
 

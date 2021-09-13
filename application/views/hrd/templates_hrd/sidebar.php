@@ -36,33 +36,21 @@
       <!-- Nav Item - Pages Collapse Menu -->
 
       <!-- Nav Item - Utilities Collapse Menu -->
+      
+      <!-- Kelola data Kriteria -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link" href="<?php echo base_url('hrd/kriteria') ?>">
           <i class="fas fa-file-alt"></i>
-          <span>Kelola Data Kriteria</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Sub-Menu :</h6>
-            <!-- <a class="collapse-item" href="<?php echo base_url('hrd/nilai/tambah') ?>">Tambah Data Kriteria</a> -->
-            <a class="collapse-item" href="<?php echo base_url('hrd/kriteria') ?>">Kelola Data Kriteria</a>
-          </div>
-        </div>
+          <span>Kelola Data Kriteria</span></a>
       </li>
 
-      <!-- Nav Item - Pages Collapse Menu -->
+     <!-- Hasil Perhitungan Penilaian -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link" href="<?php echo base_url('hrd/hasil')?>">
           <i class="fas fa-chart-line"></i>
-          <span>Perhitungan Penilaian</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Sub-Menu :</h6>
-            <a class="collapse-item" href="<?php echo base_url('hrd/hasil') ?>">Kelola Penilaian</a>
-          </div>
-        </div>
+          <span>Hasil Perhitungan Penilaian</span></a>
       </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

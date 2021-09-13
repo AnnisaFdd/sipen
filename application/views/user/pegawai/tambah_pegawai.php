@@ -4,7 +4,7 @@
       <!-- Begin Page Content -->
       <div class="container-fluid">
         <div class="alert bg-content" role="alert">
-          <i class="fas fa-plus-square"></i> Tambah Data karyawan
+          <i class="fas fa-plus-square"></i> Tambah Data Pegawai
         </div>
         <?php echo $this->session->flashdata('pesan');?>
         <!-- Content Row -->
@@ -13,29 +13,33 @@
             <div class="col-md-8">
               <div class="card mb-4 py-3 border-left-danger">
                 <div class="card-body">
-                  <h4><i class="far fa-edit"></i> <b >Form Tambah Data Karyawan <?php echo $user['nama_subbidang']; ?></b></h4>
+                  <h4><i class="far fa-edit"></i> <b >Form Tambah Data Pegawai <?php echo $user['nama_subbidang']; ?></b></h4>
                   <div class="garis" style="width: 100%; margin-bottom: 2%;"></div>
 
-                <form method="post" action="<?php echo site_url('user/karyawan/tambah_aksi') ?>">
+                <form method="post" action="<?php echo site_url('user/pegawai/tambah_aksi') ?>">
                   <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">Nama Karyawan</label>
+                    <label class="col-sm-4 col-form-label">Nama Pegawai</label>
                     <div class="col-sm-8">
-                      <input required="required" type="text" name="nama_karyawan" class="form-control" placeholder="Masukkan Nama karyawan" required="required">
+                      <input required="required" type="text" name="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" required="required">
                     </div>
                   </div>
 
 
-                    <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">Tanggal Lahir</label>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Jenis Kelamin</label>
                     <div class="col-sm-8">
-                      <input required="required" type="date" name="tanggal_lahir" class="form-control" placeholder="Masukkan Tanggal Lahir Karyawan" required="required">
+                      <select name="jenis_kelamin" class="form-control select2" style="width: 100%;" required="required">
+                        <option value="">-- Pilih Jenis Kelamin --</option>
+                        <option value="pria">Pria</option>
+                        <option value="wanita">Wanita</option>
+                      </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Alamat</label>
                     <div class="col-sm-8">
-                      <input required="required" type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat karyawan" required="required">
+                      <input required="required" type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat Pegawai" required="required">
                     </div>
                   </div>
 
@@ -44,7 +48,7 @@
                     <div class="col-sm-8">
                       <select name="subbidang" class="form-control select2" style="width: 100%;" required="required">
                         <option value="">-- Pilih Subbidang --</option>
-                        <?php foreach($karyawan as $bg) : ?>
+                        <?php foreach($pegawai as $bg) : ?>
                         <option value="<?php echo $bg->id_subbidang; ?>"><?php echo $bg->nama_subbidang; ?></option>
                         <?php endforeach; ?>
                       </select>

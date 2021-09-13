@@ -37,13 +37,13 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-users"></i>
-          <span>Kelola Data Karyawan</span>
+          <span>Kelola Data Pegawai</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub-Menu :</h6>
-            <a class="collapse-item" href="<?php echo base_url('user/karyawan/tambah') ?>">Tambah Karyawan</a>
-            <a class="collapse-item" href="<?php echo base_url('user/karyawan') ?>">Kelola Karyawan</a>
+            <a class="collapse-item" href="<?php echo base_url('user/pegawai/tambah') ?>">Tambah Pegawai</a>
+            <a class="collapse-item" href="<?php echo base_url('user/pegawai') ?>">Kelola Pegawai</a>
           </div>
         </div>
       </li>
