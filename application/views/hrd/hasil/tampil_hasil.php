@@ -10,12 +10,22 @@
         <!-- Content Row -->
         <div class="row">
             <div class="col-md-12">
+              <div>
+                  <button onClick="refreshPage();"class="btn btn-success"><i class="fas fa-sync-alt" ></i>Hitung Ulang Nilai</button>
+                  <script type="text/javascript">
+                    function refreshPage()
+                    {
+                        window.location.reload();
+                        alert("Data Nilai Perhitungan Telah Berhasil Diperharui");
+                    }
+                  </script>
+              </div>
                  <!-- single button refresh-->
-                <div>
+                <!-- <div>
                   <button onClick="window.location.reload();" class="btn btn-success"><i class="fas fa-sync-alt"></i> 
                     Hitung Ulang Nilai
                   </button>
-              </div>
+              </div> -->
               <br>
               <div class="card mb-4 py-3 border-left-danger">
                 <div class="card-body">
@@ -59,7 +69,7 @@
                                           ?> 
                                           <tr style="font-size: 12px; text-align:center;">
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $sts->nama_kriteria; ?></td>
+                                            <td style="text-align: left"><?php echo $sts->nama_kriteria; ?></td>
                                             <td><?php echo $sts->bobot; ?></td>
                                             <td><?php echo $sts->keterangan; ?></td>
                                           </tr> 
@@ -85,6 +95,7 @@
                                           <tr style="font-size: 12px; text-align: center;">
                                             <th>No</th>
                                             <th>Nama Pegawai</th>
+                                            <th>Subbidang</th>
                                             <th>Kesetiaan</th>
                                             <th>Prestasi Kerja</th>
                                             <th>Tanggung Jawab</th>
@@ -102,7 +113,8 @@
                                           ?> 
                                           <tr style="font-size: 12px; text-align:center;">
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $sts->nama_pegawai; ?></td>
+                                            <td style="text-align: left"><?php echo $sts->nama_pegawai; ?></td>
+                                            <td style="text-align: left"><?php echo $sts->nama_subbidang; ?></td>
                                             <td><?php echo $sts->C1; ?></td>
                                             <td><?php echo $sts->C2; ?></td>
                                             <td><?php echo $sts->C3; ?></td>
@@ -152,8 +164,8 @@
                                           ?> 
                                           <tr style="font-size: 12px; text-align:center;">
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $sts[8]; ?></td>
-                                            <td><?php echo $sts[12]; ?></td>
+                                            <td style="text-align: left"><?php echo $sts[8]; ?></td>
+                                            <td style="text-align: left"><?php echo $sts[12]; ?></td>
                                             <td><?php echo $sts[0]; ?></td>
                                             <td><?php echo $sts[1]; ?></td>
                                             <td><?php echo $sts[2]; ?></td>
@@ -203,8 +215,8 @@
                                           ?> 
                                           <tr style="font-size: 12px; text-align:center;">
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $sts[0]; ?></td>
-                                            <td><?php echo $sts[3]; ?></td>
+                                            <td style="text-align: left"><?php echo $sts[0]; ?></td>
+                                            <td style="text-align: left"><?php echo $sts[3]; ?></td>
                                             <td><?php echo $sts[4]; ?></td>
                                             <td><?php echo $sts[5]; ?></td>
                                             <td><?php echo $sts[6]; ?></td>
@@ -247,8 +259,8 @@
                                           ?> 
                                           <tr style="font-size: 12px; text-align:center;">
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $sts[0]; ?></td>
-                                            <td><?php echo $sts[3]; ?></td>
+                                            <td style="text-align: left"><?php echo $sts[0]; ?></td>
+                                            <td style="text-align: left"><?php echo $sts[3]; ?></td>
                                             <td><?php echo $sts[4]; ?></td>
                                           </tr> 
                                         <?php endforeach; ?>

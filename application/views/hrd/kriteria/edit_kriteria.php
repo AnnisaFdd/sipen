@@ -31,7 +31,7 @@
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Bobot</label>
                     <div class="col-sm-8">
-                      <input required="required" type="number" name="bobot"  class="form-control" value="<?php echo  $kr->bobot?>" step="0.001">
+                      <input required="required" type="number" name="bobot"  class="form-control" value="<?php echo  $kr->bobot?>" step="0.01">
                     </div>
                   </div>
                   <div class="form-group row">

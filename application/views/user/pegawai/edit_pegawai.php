@@ -26,7 +26,7 @@
                     <div class="col-sm-8">
                       <input type="hidden" name="id_pegawai" class="form-control" value="<?php echo $kr->id_pegawai?>">
                       <input type="hidden" name="subbidang" class="form-control" value="<?php echo $kr->id_subbidang?>">
-                      <input required="required" type="text" name="nama_pegawai"  class="form-control" value="<?php echo  $kr->nama_pegawai?>">
+                      <input required="required" type="text" name="nama_pegawai"  class="form-control" value="<?php echo  $kr->nama_pegawai?>" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
                     </div>
                   </div>
 

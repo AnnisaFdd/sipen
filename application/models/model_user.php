@@ -28,6 +28,7 @@ class Model_user extends CI_Model{
 	public function kriteria(){
 		$this->db->select('*');
 		$this->db->from('kriteria');
+		$this->db->order_by("bobot", "desc");
 		$query=$this->db->get();
 		return $query->result();
 	}
@@ -74,6 +75,15 @@ class Model_user extends CI_Model{
 		$this->db->from('pegawai');
 		$this->db->join('subbidang','subbidang.id_subbidang = pegawai.id_subbidang');
 		$this->db->where(array('pegawai.id_subbidang' => $subbidangs));
+		$this->db->order_by("pegawai.nama_pegawai", "asc");
+		$query=$this->db->get();
+		return $query->result();
+	}
+
+	//Tampil Pegawai HRD
+	public function get_hrdP(){
+		$this->db->select('*');
+		$this->db->from('pegawai');
 		$query=$this->db->get();
 		return $query->result();
 	}
@@ -114,6 +124,7 @@ class Model_user extends CI_Model{
 		$this->db->join('pegawai','pegawai.id_pegawai = nilai.id_pegawai');
 		$this->db->join('subbidang','pegawai.id_subbidang = subbidang.id_subbidang');
 		$this->db->where(array('pegawai.id_subbidang' => $subbidang));
+		$this->db->order_by("pegawai.nama_pegawai", "asc");
 		$query=$this->db->get();
 		return $query->result();
 
@@ -171,7 +182,7 @@ class Model_user extends CI_Model{
 		$this->db->from('nilai');
 		$this->db->join('pegawai','pegawai.id_pegawai = nilai.id_pegawai');
 		$this->db->join('subbidang','pegawai.id_subbidang = subbidang.id_subbidang');
-		$this->db->order_by("nilai.id_nilai", "asc");
+		$this->db->order_by("subbidang.id_subbidang", "asc");
 		$query=$this->db->get();
 		return $query->result();
 	}

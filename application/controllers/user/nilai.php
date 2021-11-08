@@ -16,7 +16,7 @@ class Nilai extends CI_Controller{
 		$data['nilai'] = $this->model_user->get_nilai($id_subbidang);
 		$this->load->view('user/templates/header');
 		$this->load->view('user/templates/sidebar',$data);
-		$this->load->view('user/nilai/dashboard', $data);
+		$this->load->view('user/nilai/tampil_nilai', $data);
 		$this->load->view('user/templates/footer');
 		
 	}

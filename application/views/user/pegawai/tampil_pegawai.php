@@ -4,7 +4,7 @@
       <!-- Begin Page Content -->
       <div class="container-fluid">
         <div class="alert bg-content" role="alert">
-          <i class="fas fa-cogs"></i> Kelola Data Karyawan
+          <i class="fas fa-cogs"></i> Kelola Data Pegawai 
         </div>
         <?php echo $this->session->flashdata('pesan');?>
         <!-- Content Row -->
@@ -12,7 +12,7 @@
             <div class="col-md-12">
               <div class="card mb-4 py-3 border-left-danger">
                 <div class="card-body">
-                  <h4><i class="far fa-edit"></i> <b >Kelola Data Karyawan</b></h4>
+                  <h4><i class="far fa-edit"></i> <b >Kelola Data Pegawai <?php echo $user['nama_subbidang']; ?></b></h4>
                   <div class="garis" style="width: 100%; margin-bottom: 2%;"></div>
                 </div>
 
@@ -28,25 +28,27 @@
                           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0.5">
                             <thead>
                               <tr style="font-size: 12px; text-align: center;">
-                                <th>No</th>
-                                <th>Nama Karyawan</th>
-                                <th>Subbidang</th>
-                                <th>Action</th>
+                                <th width="5%">No</th>
+                                <th width="30%">Nama Pegawai</th>
+                                <th width="10%%">Jenis Kelamin</th>
+                                <th width="40%">Alamat</th>
+                                <th width="10%">Action</th>
                               </tr>
                             </thead>
                             <tbody>
                               <?php 
                                 $no=1;
-                                foreach ($karyawan as $sts) :
+                                foreach ($pegawai as $sts) :
                               ?> 
                               <tr style="font-size: 12px; text-align:center;">
                                 <td><?php echo $no++; ?></td>
-                                <td><?php echo $sts->nama_karyawan; ?></td>
-                                <td><?php echo $sts->nama_subbidang; ?></td>
+                                <td style="text-align: left"><?php echo $sts->nama_pegawai; ?></td>
+                                <td style="text-align: left"><?php echo $sts->jenis_kelamin; ?></td>
+                                <td style="text-align: left"><?php echo $sts->alamat; ?></td>  
                                 <td class="center">
-                                  <?php echo anchor('hrd/karyawan/edit/'.$sts->id_karyawan, '<div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>'); ?>
+                                  <?php echo anchor('user/pegawai/edit/'.$sts->id_pegawai, '<div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>'); ?>
                                   <?php $onclick = array('onclick'=>"return confirm('Anda yakin untuk menghapus data?')");?>
-                                  <?php echo anchor('hrd/karyawan/hapus/'.$sts->id_karyawan, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>',$onclick); ?>
+                                  <?php echo anchor('user/pegawai/hapus/'.$sts->id_pegawai, '<div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>',$onclick); ?>
                                 </td>
                               </tr> 
                             <?php endforeach; ?>

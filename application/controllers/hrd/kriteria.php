@@ -14,7 +14,7 @@ class Kriteria extends CI_Controller{
 		$data['kriteria'] = $this->model_user->kriteria();
 		$this->load->view('hrd/templates_hrd/header');
 		$this->load->view('hrd/templates_hrd/sidebar',$data);
-		$this->load->view('hrd/kriteria/dashboard', $data);
+		$this->load->view('hrd/kriteria/tampil_kriteria', $data);
 		$this->load->view('hrd/templates_hrd/footer');
 		
 	}

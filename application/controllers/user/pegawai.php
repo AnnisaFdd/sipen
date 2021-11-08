@@ -16,7 +16,7 @@ class Pegawai extends CI_Controller{
 		$data['pegawai'] = $this->model_user->get_pegawaiall($id_subbidang);
 		$this->load->view('user/templates/header');
 		$this->load->view('user/templates/sidebar',$data);
-		$this->load->view('user/pegawai/dashboard', $data);
+		$this->load->view('user/pegawai/tampil_pegawai', $data);
 		$this->load->view('user/templates/footer');
 		
 	}

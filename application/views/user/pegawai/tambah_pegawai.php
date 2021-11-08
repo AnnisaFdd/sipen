@@ -20,7 +20,7 @@
                   <div class="form-group row">
                     <label class="col-sm-4 col-form-label">Nama Pegawai</label>
                     <div class="col-sm-8">
-                      <input required="required" type="text" name="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" required="required">
+                      <input required="required" type="text" name="nama_pegawai" class="form-control" placeholder="Masukkan Nama Pegawai" required="required" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
                     </div>
                   </div>
 

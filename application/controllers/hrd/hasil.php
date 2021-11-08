@@ -12,14 +12,18 @@ class Hasil extends CI_Controller{
 	public function index(){
 		$data['usernya'] = $this->db->get_where('user',['username' => $this->session->userdata('usernames')])->row_array();
 		$data['kriteria'] = $this->model_user->kriteria();
+		
+		// $data['pgw'] = $this->model_user->get_hrdP();
+		
 		$data['nilai'] = $this->model_user->get_nilaiK();
 		$data['keterangan'] = $this->model_user->get_keterangan();
 		$data['kriteria'] = $this->model_user->kriteria();
 		$data['nilai_bobot'] = $this->model_user->get_nilai_bobot();
 		$data['result'] = $this->model_user->get_bobot();
 
-		if($data['nilai_bobot']==1){
-						//--- PEMBOBOTAN ---//
+		//Melakukan pengecekan nilai bobot kriteria	
+		if($data['nilai_bobot']==1.0000000223517418){
+				
 				$bobot = array();
 				$asarray = json_decode(json_encode($data['nilai']), true);
 
@@ -28,7 +32,7 @@ class Hasil extends CI_Controller{
 					
 					$potong = array_splice($potong, 2, count($potong));
 					
-
+					//Melakukan pembobotan pada setiap nilai
 					foreach ($potong as $p) {
 						$get_idx = array_search($p,$potong);
 						if($get_idx === array_search($satu[$get_idx],$potong)){
@@ -62,7 +66,6 @@ class Hasil extends CI_Controller{
 				//Normalisasi
 				$norm = array();
 				$jumlah_kolom = array();
-				// $output= array();
 
 				// jumlah each column
 				//i kolom dan j baris
@@ -86,7 +89,7 @@ class Hasil extends CI_Controller{
 				}
 				 
 
-				// hitung normalisasi
+				// menghitung normalisasi
 				foreach ($bobot as $dua) {
 					$potong = array_slice($dua, 0); //copy array agar tetap
 					array_push($norm, $dua[8], $dua[9], $dua[10], $dua[12]); //push 2 kolom pertama
@@ -127,7 +130,7 @@ class Hasil extends CI_Controller{
 
 				$result = array_chunk($result, max(array_map('count', $asarray))-10); // array to matriks based column
 				
-				//Final
+				//Hasil akhir perhitungan
 
 				function invenDescSort($item1,$item2)
 				{
@@ -141,7 +144,7 @@ class Hasil extends CI_Controller{
 
 				$this->load->view('hrd/templates_hrd/header');
 				$this->load->view('hrd/templates_hrd/sidebar',$data);
-				$this->load->view('hrd/hasil/dashboard', $data);
+				$this->load->view('hrd/hasil/tampil_hasil', $data);
 				$this->load->view('hrd/templates_hrd/footer');		
 		}else{
 		$this->session->set_flashdata('pesan','<div class="alert alert-danger alert dismissible fade show" role="alert">Nilai Total Data Kriteria Harus Sama Dengan Satu<button type="button" class="close" data-dismiss="alert" aria=label="Close"><span aria-hidden="true">&times;</span></button></div>');
