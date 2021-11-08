@@ -4120,8 +4120,8 @@
 		}
 	
 		_fnClearTable( settings );
-		settings._iRecordsTotal   = parseInt(recordsTotal, 20);
-		settings._iRecordsDisplay = parseInt(recordsFiltered, 20);
+		settings._iRecordsTotal   = parseInt(recordsTotal, 10);
+		settings._iRecordsDisplay = parseInt(recordsFiltered, 10);
 	
 		for ( var i=0, ien=data.length ; i<ien ; i++ ) {
 			_fnAddData( settings, data[i] );
@@ -4787,7 +4787,7 @@
 	
 	function _fnLengthChange ( settings, val )
 	{
-		var len = parseInt( val, 20 );
+		var len = parseInt( val, 10 );
 		settings._iDisplayLength = len;
 	
 		_fnLengthOverflow( settings );
@@ -10190,7 +10190,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"aLengthMenu": [ 20, 35, 50, 100 ],
+		"aLengthMenu": [ 10, 25, 50, 100 ],
 	
 	
 		/**
@@ -11194,7 +11194,7 @@
 		 *      } );
 		 *    } )
 		 */
-		"iDisplayLength": 20,
+		"iDisplayLength": 10,
 	
 	
 		/**
@@ -13641,7 +13641,7 @@
 		 *  @type int
 		 *  @default 10
 		 */
-		"_iDisplayLength": 20,
+		"_iDisplayLength": 10,
 	
 		/**
 		 * Paging start point - aiDisplay index
