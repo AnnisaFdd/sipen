@@ -36,7 +36,7 @@ class Hasil extends CI_Controller{
 					foreach ($potong as $p) {
 						$get_idx = array_search($p,$potong);
 						if($get_idx === array_search($satu[$get_idx],$potong)){
-							if($p == $satu['nama_pegawai'] || $p == $satu['nama_subbidang'] || $p == $satu['jenis_kelamin'] || $p == $satu['alamat']  ){
+							if($p == $satu['nama_pegawai'] || $p == $satu['nama_subbidang'] || $p == $satu['jenis_kelamin'] || $p == $satu['alamat'] || $p == $satu['id_subbidang'] ){
 								$get_idx = $p;
 							}else if($p>=0 && $p<=50){
 								$get_idx = 1;
@@ -63,7 +63,7 @@ class Hasil extends CI_Controller{
 				}
 
 				
-				//Normalisasi
+				// //Normalisasi
 				$norm = array();
 				$jumlah_kolom = array();
 
@@ -92,7 +92,7 @@ class Hasil extends CI_Controller{
 				// menghitung normalisasi
 				foreach ($bobot as $dua) {
 					$potong = array_slice($dua, 0); //copy array agar tetap
-					array_push($norm, $dua[8], $dua[9], $dua[10], $dua[12]); //push 2 kolom pertama
+					array_push($norm, $dua[8], $dua[9], $dua[10], $dua[11], $dua[12]); //push 2 kolom pertama
 					$potong = array_splice($potong, 0, count($potong)-5); //split selain 2 kolom pertama
 					 
 						for ($i=0; $i<=count($potong)-1; $i++){
@@ -106,10 +106,10 @@ class Hasil extends CI_Controller{
 						}
 				}
 
-				$norm = array_chunk($norm, max(array_map('count', $asarray))-3); // array to matriks based column
+				$norm = array_chunk($norm, max(array_map('count', $asarray))-2); // array to matriks based column
 				$data['norm'] = $norm;
 
-				// //Hasil, array of array to array
+				//Hasil, array of array to array
 				foreach($data['result'] as $k=>$v) {
 		 		   $new[$k] = $v['bobot'];
 				}
@@ -118,8 +118,8 @@ class Hasil extends CI_Controller{
 
 				foreach ($norm as $tiga) {
 					$potong = array_slice($tiga, 0); //copy array agar tetap
-					array_push($result, $tiga[0], $tiga[1],$tiga[2], $tiga[3]); //push 4 kolom pertama
-					$potong = array_splice($potong, 4, count($potong)); //split selain 4 kolom pertama
+					array_push($result, $tiga[0], $tiga[1], $tiga[2], $tiga[3], $tiga[4]); //push 5 kolom pertama
+					$potong = array_splice($potong, 5, count($potong)); //split selain 5 kolom pertama
 					$count=0;
 					for($i=0; $i<=count($potong)-1; $i++){
 						$count = round($count+$potong[$i]*$new[$i],3);
@@ -128,19 +128,112 @@ class Hasil extends CI_Controller{
 					array_push($result, $count);	
 				}
 
-				$result = array_chunk($result, max(array_map('count', $asarray))-10); // array to matriks based column
+				$result = array_chunk($result, max(array_map('count', $asarray))-9); // array to matriks based column
+
+				usort($result,function($a,$b){
+				  return $a[3]  <=> $b[3] //first desc
+				      ?: $b[5]   <=> $a[5] 
+				  ;
+				});
+
+				// function array_orderby()
+				// {
+				//     $args = func_get_args();
+				//     $data = array_shift($args);
+				//     foreach ($args as $n => $field) {
+				//         if (is_string($field)) {
+				//             $tmp = array();
+				//             foreach ($data as $key => $row)
+				//                 $tmp[$key] = $row[$field];
+				//             $args[$n] = $tmp;
+				//             }
+				//     }
+				//     $args[] = &$data;
+				//     call_user_func_array('array_multisort', $args);
+				//     return array_pop($args);
+				// }
+
+				// $sorted = array_orderby($result, 3, SORT_DESC, 5, SORT_ASC);
+			
+
+				// as of PHP 5.5.0 you can use array_column() instead of the above code
+				// $brand= array_column($result[0]);
+				// $city= array_column($result[1]);
+
+				// print_r($brand);
+
+				// foreach ($data as $key => $row) {
+				//     $volume[$key]  = $row['volume'];
+				//     $edition[$key] = $row['edition'];
+				// }
+
+				// $volume  = array_column($result, 5);
+				// $edition = array_column($result, 4);
+
+				// // Sort the data with volume descending, edition ascending
+				// // Add $data as the last parameter, to sort by the common key
+				// array_multisort($volume, SORT_DESC, $edition, SORT_ASC, $result);
+
+				// array_multisort(array_column($result, 5),SORT_DESC, array_column($result, 3), SORT_ASC, SORT_NUMERIC, $result);
+
+
+				// Sort the data with volume descending, edition ascending
+				// Add $data as the last parameter, to sort by the common key
+				// array_multisort($brand, SORT_DESC, $city, SORT_ASC, $data);
+								
+				//Sorting Nilai
+				// function invenDescSort($item1,$item2)
+				// {
+				//     if ($item1[5] == $item2[5]) return 0;
+				//     return ($item1[5] < $item2[5]) ? 1 : -1;
+				// }
+
+				// usort($result,'invenDescSort');
+
+				// array_multisort($result[5], SORT_ASC, $result[3], SORT_DESC);
+
+				// usort($result,function($a,$b){
+				//     $c = $b[5] - $a[5];
+				//     $c .= strcmp($b[4],$a[4]);
+				// });
+
+				// function cmp($a, $b) {
+				//     return ($a[4], $b[4]);
+				// }
+
+				// usort($result, "cmp");
+
+				// Asc sort
+				// usort($result,function($first,$second){
+				//     return strtolower($first[4]) > strtolower($second[4]);
+				// });
+
+				//Grouping Subbidang
+				// function inven($item1,$item2)
+				// {
+				//     if ($item1[3] == $item2[3]) return 0;
+				//     return strtolowe(($item1[3] < $item2[3]) ? -1 : 1);
+				// }
+
+				// usort($result,'inven');
+
+
+				// function _group_by($array, $key) {
+				//     $return = array();
+				//     foreach($array as $val) {
+				//         // $return[$val[$key]][] = $val;
+				//         $return[$val[$key]][] = $val;
+				//     }
+				//     return $return;
+				// }
+
+				// $byGroup = _group_by($result, "3");
+
+				// $grouped = array_group_by($result, '3');
 				
-				//Hasil akhir perhitungan
-
-				function invenDescSort($item1,$item2)
-				{
-				    if ($item1[4] == $item2[4]) return 0;
-				    return ($item1[4] < $item2[4]) ? 1 : -1;
-				}
-
-				usort($result,'invenDescSort');
-
 				$data['wr'] = $result;
+				
+				// phpinfo();
 
 				$this->load->view('hrd/templates_hrd/header');
 				$this->load->view('hrd/templates_hrd/sidebar',$data);

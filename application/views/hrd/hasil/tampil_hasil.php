@@ -195,7 +195,7 @@
                                       <table class="table table-bordered" width="100%" cellspacing="0.5">
                                         <thead>
                                           <tr style="font-size: 12px; text-align: center;">
-                                            <th>No</th>
+                                            <th >No</th>
                                             <th>Nama Pegawai</th>
                                             <th>Subbidang</th>
                                             <th>Kesetiaan</th>
@@ -216,8 +216,7 @@
                                           <tr style="font-size: 12px; text-align:center;">
                                             <td><?php echo $no++; ?></td>
                                             <td style="text-align: left"><?php echo $sts[0]; ?></td>
-                                            <td style="text-align: left"><?php echo $sts[3]; ?></td>
-                                            <td><?php echo $sts[4]; ?></td>
+                                            <td style="text-align: left"><?php echo $sts[4]; ?></td>
                                             <td><?php echo $sts[5]; ?></td>
                                             <td><?php echo $sts[6]; ?></td>
                                             <td><?php echo $sts[7]; ?></td>
@@ -225,6 +224,7 @@
                                             <td><?php echo $sts[9]; ?></td>
                                             <td><?php echo $sts[10]; ?></td>
                                             <td><?php echo $sts[11]; ?></td>
+                                            <td><?php echo $sts[12]; ?></td>
                                           </tr> 
                                         <?php endforeach; ?>
                                         </tbody> 
@@ -246,7 +246,7 @@
                                       <table class="table table-bordered" width="100%" cellspacing="0.5">
                                         <thead>
                                           <tr style="font-size: 12px; text-align: center;">
-                                            <th>No</th>
+                                            <th width="5%">No</th>
                                             <th>Nama Karyawan</th>
                                             <th>Subbidang</th>
                                             <th>Nilai Akhir</th>
@@ -260,8 +260,8 @@
                                           <tr style="font-size: 12px; text-align:center;">
                                             <td><?php echo $no++; ?></td>
                                             <td style="text-align: left"><?php echo $sts[0]; ?></td>
-                                            <td style="text-align: left"><?php echo $sts[3]; ?></td>
-                                            <td><?php echo $sts[4]; ?></td>
+                                            <td style="text-align: left"><?php echo $sts[4]; ?></td>
+                                            <td><?php echo $sts[5]; ?></td>
                                           </tr> 
                                         <?php endforeach; ?>
                                         </tbody> 
@@ -272,21 +272,12 @@
                           </div>
                       </li>
                   </ul> 
-                  <!-- isi -->
-                    
-                    <!-- Nilai -->
-                    <!-- id="dataTable" -->
-                     
-                    <!-- Normalisasi -->
-                       
-                  
-                  <!-- End Normalisasi -->
-                  <!-- Normalisasi -->
-                    
+                 <!-- Coba -->
+                  <?php echo '<pre>'; ?>
+                  <?php print_r($wr)?>
+                  <?php echo '<pre>'; ?>
 
-                    <!-- Hasil Akhir -->
-                      
-                    <!-- End Hasil Akhir -->
+                 <!-- End Coba -->
                   </div>
 
                   <!-- End Container Fluid -->
